@@ -1,0 +1,75 @@
+def get_float(prompt):
+    """Safely get a numeric input from user."""
+    while True:
+        try:
+            return float(input(prompt))
+        except ValueError:
+            print("Invalid number. Please try again.")
+
+
+# ---- Calculation Functions ----
+def option_1():
+    print("\nOption 1: Calico")
+    rule = get_float("Tile rule points: ")
+    cat = get_float("Cat token points: ")
+    buttons = get_float("Number of coloured buttons: ")
+    result = rule + cat + (buttons *3)
+    print(f"Score = {result}")
+
+
+def option_2():
+    print("\nOption 2: Doomlings")
+    worldsEnd = get_float("World's end catastrophe points: ")
+    dominant1 = get_float("Dominant card 1 score (put 0 if you don't have one): ")
+    dominant2 = get_float("Dominant card 2 score (put 0 if you don't have one): ")
+    faceValue = get_float("Face value points (ignore unnumbered and dominant cards): ")
+    bonuses = get_float("Total bonus points from non-dominant cards: ")
+    result = worldsEnd + dominant1 + dominant2 + faceValue + bonuses
+    print(f"Score = {result}")
+
+
+def option_3():
+    print("\nOption 3: Wingspan")
+    birdCard = get_float("Bird card points: ")
+    bonusCard = get_float("Bonus card points: ")
+    endRound = get_float("End of round goal points: ")
+    eggs = get_float("Number of eggs: ")
+    food = get_float("Food tokens: ")
+    tuckedCards = get_float("Number of cards tucked under a bird card: ")
+    hummingbird = get_float("Points on hummingbird track: ")
+    nectar = get_float("Nectar points: ")
+    result = birdCard + bonusCard + endRound + eggs + food + tuckedCards + hummingbird + nectar
+    print(f"Score = {result}")
+
+
+# ---- Menu System ----
+def show_menu():
+    print("=== Board Game Score Calculator Menu ===")
+    print("1. Calico")
+    print("2. Doomlings")
+    print("3. Wingspan")
+    print("0. Exit")
+
+
+def main():
+    while True:
+        show_menu()
+        choice = input("Choose an option: ")
+
+        if choice == "1":
+            option_1()
+        elif choice == "2":
+            option_2()
+        elif choice == "3":
+            option_3()
+        elif choice == "0":
+            print("Goodbye!")
+            break
+        else:
+            print("Invalid choice. Try again.\n")
+
+
+# ---- Run Program ----
+if __name__ == "__main__":
+    main()
+
